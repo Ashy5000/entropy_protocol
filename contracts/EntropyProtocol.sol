@@ -22,7 +22,7 @@ contract EntropyProtocol {
     }
 
     function pullEntropy(uint256 poolSize, EntropyConsumer consumer) public {
-        uint i = queue.length - 1;
+        uint i = 0;
         uint consumed = 0;
         while (consumed < poolSize) {
             if (!queue[i].depleted) {
@@ -30,7 +30,7 @@ contract EntropyProtocol {
                 consumed++;
                 queue[i].depleted = true;
             }
-            i--;
+            i++;
         }
     }
 }
