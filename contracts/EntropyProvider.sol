@@ -8,9 +8,15 @@ interface EntropyProvider {
     function pullTo(EntropyConsumer consumer) external;
 }
 
-contract ExampleProvider is EntropyProvider {
+contract MultiContribProvider is EntropyProvider {
+    EntropyConsumer[] waitingConsumers;
+
     function pullTo(EntropyConsumer consumer) public {
-        consumer.pushTo(1234); // TEST ONLY
-        // TODO: wait for contribution, then push to consumer
+        waitingConsumers.push(consumer);
+    }
+
+    function supply(uint256 data) public {
+        waitingConsumers[0].pushTo(data);
+        delete waitingConsumers[0];
     }
 }
