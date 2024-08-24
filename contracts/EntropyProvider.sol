@@ -12,7 +12,7 @@ contract MultiContribProvider is EntropyProvider {
     EntropyConsumer[] waitingConsumers;
     uint256 slashThreshold = 10;
 
-    function pullTo(EntropyConsumer consumer) public {
+    function pullTo(EntropyConsumer consumer) public override {
         assert(waitingConsumers.length < slashThreshold); // Don't accept new requests if it would lead to slashing
         waitingConsumers.push(consumer);
     }
