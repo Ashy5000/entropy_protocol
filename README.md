@@ -1,2 +1,3 @@
 # entropy_protocol
-A verifiable onchain randomness marketplace
+
+A decentralized onchain solution for generating true unperdictable randomness.
