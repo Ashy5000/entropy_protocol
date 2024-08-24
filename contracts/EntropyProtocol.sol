@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity >=0.8.2 <0.9.0;
+pragma solidity >=0.8.20 <0.9.0;
 
 import "./EntropyConsumer.sol";
 import "./EntropyProvider.sol";
+import "./EntropyToken.sol";
 
 contract EntropyProtocol {
     struct QueueElement {
@@ -14,9 +15,11 @@ contract EntropyProtocol {
 
     QueueElement[] queue;
     PoolConsumer router;
+    EntropyToken token;
 
     constructor() {
         router = new PoolConsumer();
+        token = new EntropyToken(1_000_000, msg.sender);
     }
 
     function activeQueueSize() public view returns (uint256) {
