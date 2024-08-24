@@ -19,6 +19,16 @@ contract EntropyProtocol {
         router = new PoolConsumer();
     }
 
+    function activeQueueSize() public view returns (uint256) {
+        uint256 count = 0;
+        for (uint256 i; i < queue.length; i++) {
+            if (!queue[i].depleted) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     function pushCommit() public {
         QueueElement memory elem;
         EntropyProvider provider = EntropyProvider(msg.sender);
