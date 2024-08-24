@@ -24,12 +24,12 @@ contract PoolConsumer is EntropyConsumer {
     Records records;
     uint256 slashThreshold = 10;
 
-    function prepare(address producer, address consumer) public returns (bool) {
+    function prepare(address provider, address consumer) public returns (bool) {
         assert(owner == msg.sender);
         RecordInfo memory record;
         record.consumer = consumer;
-        records.debtListings[producer].push(record);
-        return records.debtListings[producer].length > slashThreshold;
+        records.debtListings[provider].push(record);
+        return records.debtListings[provider].length > slashThreshold;
     }
 
     function pushTo(uint256 data) public override {
@@ -43,9 +43,16 @@ contract PoolConsumer is EntropyConsumer {
 }
 
 contract EndConsumer is EntropyConsumer {
-    event newData(uint256 body);
+    event newBlock(uint256 dataBlock);
 
-    function pushTo(uint256 data) public override {
-        emit newData(data);
+    uint256[] data;
+
+    function getLastBlock() public view returns (uint256) {
+        return data[data.length - 1];
+    }
+
+    function pushTo(uint256 dataBlock) public override {
+        emit newBlock(dataBlock);
+        data.push(dataBlock);
     }
 }

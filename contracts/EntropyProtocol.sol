@@ -38,11 +38,6 @@ contract EntropyProtocol {
         queue.push(elem);
     }
 
-    function fillBlock(uint256 index, uint256 data) public {
-        assert(EntropyProvider(msg.sender) == queue[index].provider);
-        queue[index].finalData = data;
-    }
-
     function pullEntropy(uint256 poolSize, EntropyConsumer consumer) public {
         uint i = 0;
         uint consumed = 0;
