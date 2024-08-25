@@ -47,4 +47,10 @@ contract EntropyToken is ERC20 {
         assert(msg.sender == owner);
         stakedTokens[provider] -= stakedBalanceOf(provider) / slashingFraction;
     }
+
+    function payForEntropy(address consumer, uint256 poolSize) public {
+        assert(msg.sender == owner);
+        uint256 base = poolSize * 1_00000000000000000;
+        _burn(consumer, base / 100); // Burn 0.01 tokens
+    }
 }

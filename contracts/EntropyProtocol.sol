@@ -62,6 +62,7 @@ contract EntropyProtocol {
     function pullEntropy(uint256 poolSize, EntropyConsumer consumer) public {
         uint i = 0;
         uint consumed = 0;
+        token.payForEntropy(address(consumer), poolSize);
         while (consumed < poolSize) {
             if (!queue[i].depleted) {
                 bool slash = router.prepare(
