@@ -68,6 +68,11 @@ contract EntropyProtocol {
                     address(queue[i].provider),
                     address(consumer)
                 );
+                if (slash) {
+                    token.slash(address(queue[i].provider));
+                } else {
+                    token.payoutStakingReward(address(queue[i].provider));
+                }
                 queue[i].provider.pullTo(router);
                 consumed++;
                 queue[i].depleted = true;

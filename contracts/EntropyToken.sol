@@ -27,10 +27,7 @@ contract EntropyToken is ERC20 {
         stakedTokens[msg.sender] += amount;
     }
 
-    function unstake(
-        uint256 amount,
-        EntropyProtocol protocol
-    ) public {
+    function unstake(uint256 amount, EntropyProtocol protocol) public {
         assert(protocol.canUnstake(msg.sender));
         assert(stakedBalanceOf(msg.sender) >= amount);
         stakedTokens[msg.sender] -= amount;
@@ -43,11 +40,11 @@ contract EntropyToken is ERC20 {
 
     function payoutStakingReward(address provider) public {
         assert(msg.sender == owner);
-        _mint(provider, stakedBalanceOf(provider) / stakingFraction);
+        stakedTokens[provider] += stakedBalanceOf(provider) / stakingFraction;
     }
 
     function slash(address provider) public {
         assert(msg.sender == owner);
-        _burn(provider, stakedBalanceOf(provider) / slashingFraction);
+        stakedTokens[provider] -= stakedBalanceOf(provider) / slashingFraction;
     }
 }

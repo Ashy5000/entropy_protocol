@@ -81,4 +81,23 @@ describe("Protocol", function () {
       expect(result).to.equal(1234);
     });
   });
+  describe("Staking", function () {
+    it("Rewards providers correctly", async function () {
+      const { protocol } = await loadFixture(deployProtocolFixture);
+      const { consumer } = await loadFixture(deployConsumerFixture);
+      const { provider } = await loadFixture(deployProviderFixture);
+      const abiString = fs.readFileSync("test/erc20abi.json");
+      const abi = JSON.parse(abiString);
+      const { owner } = await loadFixture(getOwnerFixture);
+      const tokenAddress = await protocol.getToken();
+      const token = new ethers.Contract(tokenAddress, abi, owner);
+      await token.transfer(provider, BigInt(1_000000000000000) * BigInt(100));
+      await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
+      const initialBalance = await token.stakedBalanceOf(provider);
+      await provider.commit(protocol); // Commit
+      await protocol.pullEntropy(1, consumer); // Request entropy
+      const finalBalance = await token.stakedBalanceOf(provider);
+      expect(finalBalance).to.be.greaterThan(initialBalance);
+    });
+  });
 });
