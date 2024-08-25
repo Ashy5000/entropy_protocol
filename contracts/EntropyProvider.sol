@@ -14,14 +14,15 @@ contract MultiContribProvider is EntropyProvider {
     EntropyConsumer[] waitingConsumers;
     uint256 slashThreshold = 10;
 
-    function stake(EntropyToken token, uint256 amount) public { // Stake tokens sent to the MultiContribProvider
+    function stake(EntropyToken token, uint256 amount) public {
+        // Stake tokens sent to the MultiContribProvider
         assert(token.balanceOf(address(this)) >= amount);
         token.stake(amount);
     }
 
-    function commit(EntropyProtocol protocol) public {
+    function commit(EntropyProtocol protocol, uint256 hash) public {
         assert(waitingConsumers.length < slashThreshold);
-        protocol.pushCommit();
+        protocol.pushCommit(hash);
     }
 
     function pullTo(EntropyConsumer consumer) public override {

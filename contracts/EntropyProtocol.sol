@@ -11,6 +11,7 @@ contract EntropyProtocol {
         EntropyProvider provider;
         bool depleted;
         uint256 finalData;
+        uint256 hash;
     }
 
     QueueElement[] queue;
@@ -49,13 +50,14 @@ contract EntropyProtocol {
         return true;
     }
 
-    function pushCommit() public {
+    function pushCommit(uint256 hash) public {
         QueueElement memory elem;
         assert(token.stakedBalanceOf(msg.sender) >= minimumStake);
         EntropyProvider provider = EntropyProvider(msg.sender);
         elem.provider = provider;
         elem.depleted = false;
         elem.finalData = 0;
+        elem.hash = hash;
         queue.push(elem);
     }
 
@@ -67,7 +69,8 @@ contract EntropyProtocol {
             if (!queue[i].depleted) {
                 bool slash = router.prepare(
                     address(queue[i].provider),
-                    address(consumer)
+                    address(consumer),
+                    queue[i].hash
                 );
                 if (slash) {
                     token.slash(address(queue[i].provider));

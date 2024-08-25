@@ -1,4 +1,5 @@
 require("mocha");
+var Web3 = require("web3");
 const { expect } = require("chai");
 const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
 const fs = require("fs");
@@ -40,7 +41,7 @@ describe("Protocol", function () {
       await token.transfer(provider, BigInt(1_000000000000000) * BigInt(100));
       await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
       const initialSize = await protocol.activeQueueSize();
-      await provider.commit(protocol);
+      await provider.commit(protocol, BigInt(0));
       const finalSize = await protocol.activeQueueSize();
       expect(finalSize).to.equal(initialSize + BigInt(1));
     });
@@ -58,7 +59,7 @@ describe("Protocol", function () {
       await token.transfer(provider, BigInt(1_000000000000000) * BigInt(100));
       await token.transfer(consumer, BigInt(1_000000000000000));
       await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
-      await provider.commit(protocol);
+      await provider.commit(protocol, BigInt(0));
       const initialSize = await protocol.activeQueueSize();
       await protocol.pullEntropy(1, consumer);
       const finalSize = await protocol.activeQueueSize();
@@ -76,7 +77,8 @@ describe("Protocol", function () {
       await token.transfer(provider, BigInt(1_000000000000000) * BigInt(100));
       await token.transfer(consumer, BigInt(1_000000000000000));
       await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
-      await provider.commit(protocol); // Commit
+      const hash = Web3.utils.soliditySha3(1234);
+      await provider.commit(protocol, hash); // Commit
       await protocol.pullEntropy(1, consumer); // Request entropy
       await provider.supply(1234); // Supply entropy
       const result = await consumer.getLastBlock();
@@ -94,7 +96,8 @@ describe("Protocol", function () {
       await token.transfer(provider, BigInt(1_000000000000000) * BigInt(100));
       await token.transfer(consumer, BigInt(1_000000000000000));
       await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
-      await provider.commit(protocol); // Commit
+      const hash = Web3.utils.soliditySha3(1234);
+      await provider.commit(protocol, hash); // Commit
       await protocol.pullEntropy(1, consumer); // Request entropy
       await provider.supply(1234); // Supply entropy
       const consumerBalance = await token.balanceOf(consumer);
@@ -115,7 +118,8 @@ describe("Protocol", function () {
       await token.transfer(consumer, BigInt(1_000000000000000));
       await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
       const initialBalance = await token.stakedBalanceOf(provider);
-      await provider.commit(protocol); // Commit
+      const hash = Web3.utils.soliditySha3(1234);
+      await provider.commit(protocol, hash); // Commit
       await protocol.pullEntropy(1, consumer); // Request entropy
       const finalBalance = await token.stakedBalanceOf(provider);
       expect(finalBalance).to.be.greaterThan(initialBalance);
