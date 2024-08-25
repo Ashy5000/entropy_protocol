@@ -1,8 +1,13 @@
 require("mocha");
 const { expect } = require("chai");
 const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
+const fs = require("fs");
 
 describe("Protocol", function () {
+  async function getOwnerFixture() {
+    const [owner] = await ethers.getSigners();
+    return { owner };
+  }
   async function deployProtocolFixture() {
     const Factory = await ethers.getContractFactory("EntropyProtocol");
     const protocol = await Factory.deploy();
@@ -26,8 +31,16 @@ describe("Protocol", function () {
     });
     it("adds an entropy block to the queue when pushCommit() is called", async function () {
       const { protocol } = await loadFixture(deployProtocolFixture);
+      const { provider } = await loadFixture(deployProviderFixture);
+      const abiString = fs.readFileSync("test/erc20abi.json");
+      const abi = JSON.parse(abiString);
+      const { owner } = await loadFixture(getOwnerFixture);
+      const tokenAddress = await protocol.getToken();
+      const token = new ethers.Contract(tokenAddress, abi, owner);
+      await token.transfer(provider, BigInt(1_000000000000000) * BigInt(100));
+      await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
       const initialSize = await protocol.activeQueueSize();
-      await protocol.pushCommit();
+      await provider.commit(protocol);
       const finalSize = await protocol.activeQueueSize();
       expect(finalSize).to.equal(initialSize + BigInt(1));
     });
@@ -37,6 +50,13 @@ describe("Protocol", function () {
       const { protocol } = await loadFixture(deployProtocolFixture);
       const { consumer } = await loadFixture(deployConsumerFixture);
       const { provider } = await loadFixture(deployProviderFixture);
+      const abiString = fs.readFileSync("test/erc20abi.json");
+      const abi = JSON.parse(abiString);
+      const { owner } = await loadFixture(getOwnerFixture);
+      const tokenAddress = await protocol.getToken();
+      const token = new ethers.Contract(tokenAddress, abi, owner);
+      await token.transfer(provider, BigInt(1_000000000000000) * BigInt(100));
+      await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
       await provider.commit(protocol);
       const initialSize = await protocol.activeQueueSize();
       await protocol.pullEntropy(1, consumer);
@@ -47,6 +67,13 @@ describe("Protocol", function () {
       const { protocol } = await loadFixture(deployProtocolFixture);
       const { consumer } = await loadFixture(deployConsumerFixture);
       const { provider } = await loadFixture(deployProviderFixture);
+      const abiString = fs.readFileSync("test/erc20abi.json");
+      const abi = JSON.parse(abiString);
+      const { owner } = await loadFixture(getOwnerFixture);
+      const tokenAddress = await protocol.getToken();
+      const token = new ethers.Contract(tokenAddress, abi, owner);
+      await token.transfer(provider, BigInt(1_000000000000000) * BigInt(100));
+      await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
       await provider.commit(protocol); // Commit
       await protocol.pullEntropy(1, consumer); // Request entropy
       await provider.supply(1234); // Supply entropy

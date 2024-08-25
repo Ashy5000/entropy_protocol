@@ -16,10 +16,16 @@ contract EntropyProtocol {
     QueueElement[] queue;
     PoolConsumer router;
     EntropyToken token;
+    uint256 minimumStake;
 
     constructor() {
         router = new PoolConsumer();
-        token = new EntropyToken(1_000_000, msg.sender);
+        token = new EntropyToken(1_000_000_00000000000000000, msg.sender); // 1 million tokens with 18-decimal subdivision
+        minimumStake = 1_00000000000000000; // 1 token with 18-decimal subdivision
+    }
+
+    function getToken() public view returns (EntropyToken) {
+        return token;
     }
 
     function activeQueueSize() public view returns (uint256) {
@@ -32,8 +38,20 @@ contract EntropyProtocol {
         return count;
     }
 
+    function canUnstake(address provider) public view returns (bool) {
+        for (uint256 i; i < queue.length; i++) {
+            if (!queue[i].depleted) {
+                if (address(queue[i].provider) == address(provider)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     function pushCommit() public {
         QueueElement memory elem;
+        assert(token.stakedBalanceOf(msg.sender) >= minimumStake);
         EntropyProvider provider = EntropyProvider(msg.sender);
         elem.provider = provider;
         elem.depleted = false;
@@ -46,7 +64,10 @@ contract EntropyProtocol {
         uint consumed = 0;
         while (consumed < poolSize) {
             if (!queue[i].depleted) {
-                router.prepare(address(queue[i].provider), address(consumer));
+                bool slash = router.prepare(
+                    address(queue[i].provider),
+                    address(consumer)
+                );
                 queue[i].provider.pullTo(router);
                 consumed++;
                 queue[i].depleted = true;
