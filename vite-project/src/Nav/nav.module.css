@@ -1,0 +1,12 @@
+.backgroundColor{
+    color:white;
+
+}
+
+.borderBottom{
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to right, transparent 0%, #ffffff 40%, #ffffff 60%, transparent 100%);
+    border-image-slice: 1;
+    display: flex;
+    justify-content: space-between;
+}

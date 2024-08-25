@@ -1,0 +1,8 @@
+@font-face {
+    font-family: sohne;
+    src: url("assets/sohne.ttf");
+}
+
+:root{
+    font-family: sohne , sans-serif;
+}
