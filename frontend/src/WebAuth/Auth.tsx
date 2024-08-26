@@ -231,87 +231,86 @@
 //
 // export default Auth;
 
-
-
-
-
-
-
 import { CHAIN_NAMESPACES, IProvider, WEB3AUTH_NETWORK } from "@web3auth/base";
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
 import { Web3Auth } from "@web3auth/modal";
 import { MetamaskAdapter } from "@web3auth/metamask-adapter";
 
 import { useEffect, useState } from "react";
-import {Button} from "@nextui-org/react";
-import styles from './auth.module.css'
+import { Button } from "@nextui-org/react";
+import styles from "./auth.module.css";
 
 import RPC from "./ethersRPC";
 // import RPC from "./viemRPC";
 // import RPC from "./web3RPC";
 
-const clientId = "BMrJprSon_bXbIx_yGB426J891BHap2No_OnIM_2GSjNJplQeIzVcPBtw4Er5UI5XGUwr77utCz37Cr7XKSm4yE"; // get from https://dashboard.web3auth.io
+const clientId =
+  "BMrJprSon_bXbIx_yGB426J891BHap2No_OnIM_2GSjNJplQeIzVcPBtw4Er5UI5XGUwr77utCz37Cr7XKSm4yE"; // get from https://dashboard.web3auth.io
 
 const chainConfig = {
-    chainNamespace: CHAIN_NAMESPACES.EIP155,
-    chainId: "0xaa36a7",
-    rpcTarget: "https://rpc.ankr.com/eth_sepolia",
-    // Avoid using public rpcTarget in production.
-    // Use services like Infura, Quicknode etc
-    displayName: "Ethereum Sepolia Testnet",
-    blockExplorerUrl: "https://sepolia.etherscan.io",
-    ticker: "ETH",
-    tickerName: "Ethereum",
-    logo: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
+  chainNamespace: CHAIN_NAMESPACES.EIP155,
+  chainId: "0xaa36a7",
+  rpcTarget: "https://rpc.ankr.com/eth_sepolia",
+  // Avoid using public rpcTarget in production.
+  // Use services like Infura, Quicknode etc
+  displayName: "Ethereum Sepolia Testnet",
+  blockExplorerUrl: "https://sepolia.etherscan.io",
+  ticker: "ETH",
+  tickerName: "Ethereum",
+  logo: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
 };
 
 const privateKeyProvider = new EthereumPrivateKeyProvider({
-    config: { chainConfig },
+  config: { chainConfig },
 });
 
 const web3auth = new Web3Auth({
-    clientId,
-    web3AuthNetwork: WEB3AUTH_NETWORK.SAPPHIRE_DEVNET,
-    privateKeyProvider,
+  clientId,
+  web3AuthNetwork: WEB3AUTH_NETWORK.SAPPHIRE_DEVNET,
+  privateKeyProvider,
 });
 
 const metamaskAdapter = new MetamaskAdapter({
-    clientId,
-    sessionTime: 3600, // 1 hour in seconds
-    web3AuthNetwork: "sapphire_devnet",
-    chainConfig: {
-        chainNamespace: CHAIN_NAMESPACES.EIP155,
-        chainId: "0x1",
-        rpcTarget: "https://rpc.ankr.com/eth", // This is the public RPC we have added, please pass on your own endpoint while creating an app
-    },
+  clientId,
+  sessionTime: 3600, // 1 hour in seconds
+  web3AuthNetwork: "sapphire_devnet",
+  chainConfig: {
+    chainNamespace: CHAIN_NAMESPACES.EIP155,
+    chainId: "0xaa36a7",
+    rpcTarget: "https://sepolia.infura.io/v3/", // Sepolia testnet RPC URL
+  },
 });
 
 web3auth.configureAdapter(metamaskAdapter);
 
-
-
-
 metamaskAdapter.setAdapterSettings({
-    sessionTime: 86400, // 1 day in seconds
-    chainConfig: {
-        chainNamespace: CHAIN_NAMESPACES.EIP155,
-        chainId: "0x1",
-        rpcTarget: "https://rpc.ankr.com/eth", // This is the public RPC we have added, please pass on your own endpoint while creating an app
-    },
-    web3AuthNetwork: "sapphire_mainnet",
+  sessionTime: 86400, // 1 day in seconds
+  chainConfig: {
+    chainNamespace: CHAIN_NAMESPACES.EIP155,
+    chainId: "0xaa36a7",
+    rpcTarget: "https://sepolia.infura.io/v3/", // Sepolia testnet RPC URL
+  },
+  web3AuthNetwork: "sapphire_devnet",
 });
 
+<<<<<<< HEAD:vite-project/src/WebAuth/Auth.tsx
 
 function Auth({visible,setVisible}) {
     const [provider, setProvider] = useState<IProvider | null>(null);
     const [loggedIn, setLoggedIn] = useState(false);
+=======
+function Auth() {
+  const [provider, setProvider] = useState<IProvider | null>(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+>>>>>>> 21e3d31cd2ab3c98ec5e60f1476b59305be8c237:frontend/src/WebAuth/Auth.tsx
 
-    useEffect(() => {
-        const init = async () => {
-            try {
-                await web3auth.initModal();
-                setProvider(web3auth.provider);
+  useEffect(() => {
+    const init = async () => {
+      try {
+        await web3auth.initModal();
+        setProvider(web3auth.provider);
 
+<<<<<<< HEAD:vite-project/src/WebAuth/Auth.tsx
                 if (web3auth.connected) {
                     setLoggedIn(true);
                 }
@@ -327,17 +326,20 @@ function Auth({visible,setVisible}) {
         const web3authProvider = await web3auth.connect();
         setVisible(false)
         setProvider(web3authProvider);
+=======
+>>>>>>> 21e3d31cd2ab3c98ec5e60f1476b59305be8c237:frontend/src/WebAuth/Auth.tsx
         if (web3auth.connected) {
-            setLoggedIn(true);
+          setLoggedIn(true);
         }
+      } catch (error) {
+        console.error(error);
+      }
     };
 
-    const getUserInfo = async () => {
-        const user = await web3auth.getUserInfo();
-        uiConsole(user);
-        console.log(user)
-    };
+    init();
+  }, []);
 
+<<<<<<< HEAD:vite-project/src/WebAuth/Auth.tsx
     const logout = async () => {
         await web3auth.logout();
         setVisible(true)
@@ -392,61 +394,167 @@ function Auth({visible,setVisible}) {
             el.innerHTML = JSON.stringify(args || {}, null, 2);
             console.log(...args);
         }
+=======
+  const login = async () => {
+    const web3authProvider = await web3auth.connect();
+    setProvider(web3authProvider);
+    if (web3auth.connected) {
+      setLoggedIn(true);
+>>>>>>> 21e3d31cd2ab3c98ec5e60f1476b59305be8c237:frontend/src/WebAuth/Auth.tsx
     }
+  };
 
-    const loggedInView = (
-        <>
-            <div className={styles.getInfo}>
-                <div>
-                    <Button onClick={getUserInfo} className="card" size='sm'style={{backgroundColor:'#45D483', fontWeight:600}} >
-                        Get User Info
-                    </Button>
-                </div>
-                <div>
-                    <Button onClick={getAccounts} className="card" size='sm'style={{backgroundColor:'#45D483', fontWeight:600}}>
-                        Get Accounts
-                    </Button>
-                </div>
-                <div>
-                    <Button onClick={getBalance} className="card" size='sm'style={{backgroundColor:'#45D483', fontWeight:600}}>
-                        Get Balance
-                    </Button>
-                </div>
-                <div>
-                    <Button onClick={signMessage} className="card" size='sm'style={{backgroundColor:'#45D483', fontWeight:600}}>
-                        Sign Message
-                    </Button>
-                </div>
-                <div>
-                    <Button onClick={sendTransaction} className="card" size='sm'style={{backgroundColor:'#45D483', fontWeight:600}}>
-                        Send Transaction
-                    </Button>
-                </div>
-                <div>
-                    <Button onClick={logout} className="card" size='sm'style={{backgroundColor:'#45D483', fontWeight:600}}>
-                        Log Out
-                    </Button>
-                </div>
-            </div>
-        </>
-    );
+  const getUserInfo = async () => {
+    const user = await web3auth.getUserInfo();
+    uiConsole(user);
+    console.log(user);
+  };
 
+<<<<<<< HEAD:vite-project/src/WebAuth/Auth.tsx
     const unloggedInView = (
         <Button onClick={login} variant= "solid" style={{backgroundColor:'#45D483', fontWeight:600, }}>
             Connect Wallet
         </Button>
     );
+=======
+  const logout = async () => {
+    await web3auth.logout();
+    setProvider(null);
+    setLoggedIn(false);
+    uiConsole("logged out");
+  };
+>>>>>>> 21e3d31cd2ab3c98ec5e60f1476b59305be8c237:frontend/src/WebAuth/Auth.tsx
 
-    return (
-        <div className="container">
+  // Check the RPC file for the implementation
+  const getAccounts = async () => {
+    if (!provider) {
+      uiConsole("provider not initialized yet");
+      return;
+    }
+    const address = await RPC.getAccounts(provider);
+    uiConsole(address);
+    console.log(address);
+  };
 
+  const getBalance = async () => {
+    if (!provider) {
+      uiConsole("provider not initialized yet");
+      return;
+    }
+    const balance = await RPC.getBalance(provider);
+    uiConsole(balance);
+    console.log(balance);
+  };
 
-            <div className="grid">{loggedIn ? loggedInView : unloggedInView}</div>
+  const signMessage = async () => {
+    if (!provider) {
+      uiConsole("provider not initialized yet");
+      return;
+    }
+    const signedMessage = await RPC.signMessage(provider);
+    uiConsole(signedMessage);
+  };
 
+  const sendTransaction = async () => {
+    if (!provider) {
+      uiConsole("provider not initialized yet");
+      return;
+    }
+    uiConsole("Sending Transaction...");
+    const transactionReceipt = await RPC.sendTransaction(provider);
+    uiConsole(transactionReceipt);
+  };
 
+  function uiConsole(...args: any[]): void {
+    const el = document.querySelector("#console>p");
+    if (el) {
+      el.innerHTML = JSON.stringify(args || {}, null, 2);
+      console.log(...args);
+    }
+  }
 
+  const loggedInView = (
+    <>
+      <div className={styles.getInfo}>
+        <div>
+          <Button
+            onClick={getUserInfo}
+            className="card"
+            size="sm"
+            style={{ backgroundColor: "#45D483", fontWeight: 600 }}
+          >
+            Get User Info
+          </Button>
         </div>
-    );
+        <div>
+          <Button
+            onClick={getAccounts}
+            className="card"
+            size="sm"
+            style={{ backgroundColor: "#45D483", fontWeight: 600 }}
+          >
+            Get Accounts
+          </Button>
+        </div>
+        <div>
+          <Button
+            onClick={getBalance}
+            className="card"
+            size="sm"
+            style={{ backgroundColor: "#45D483", fontWeight: 600 }}
+          >
+            Get Balance
+          </Button>
+        </div>
+        <div>
+          <Button
+            onClick={signMessage}
+            className="card"
+            size="sm"
+            style={{ backgroundColor: "#45D483", fontWeight: 600 }}
+          >
+            Sign Message
+          </Button>
+        </div>
+        <div>
+          <Button
+            onClick={sendTransaction}
+            className="card"
+            size="sm"
+            style={{ backgroundColor: "#45D483", fontWeight: 600 }}
+          >
+            Send Transaction
+          </Button>
+        </div>
+        <div>
+          <Button
+            onClick={logout}
+            className="card"
+            size="sm"
+            style={{ backgroundColor: "#45D483", fontWeight: 600 }}
+          >
+            Log Out
+          </Button>
+        </div>
+      </div>
+    </>
+  );
+
+  const unloggedInView = (
+    <Button
+      onClick={login}
+      variant="solid"
+      style={{ backgroundColor: "#45D483", fontWeight: 600, width: "40px" }}
+    >
+      Login
+    </Button>
+  );
+
+  return (
+    <div className="container">
+      <div className="grid">{loggedIn ? loggedInView : unloggedInView}</div>
+    </div>
+  );
 }
 
 export default Auth;
