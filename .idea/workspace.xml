@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c4f59ef-0da7-4908-855d-51b85a98c213" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/WebAuth/Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/WebAuth/Auth.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/Wallet/Wallet.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/Wallet/wallet.module.css" beforeDir="false" />
-    </list>
+    <list default="true" id="6c4f59ef-0da7-4908-855d-51b85a98c213" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +66,7 @@
       <workItem from="1724491981475" duration="376000" />
       <workItem from="1724492380641" duration="31083000" />
       <workItem from="1724663146100" duration="245000" />
-      <workItem from="1724663862947" duration="325000" />
+      <workItem from="1724663862947" duration="638000" />
     </task>
     <servers />
   </component>
