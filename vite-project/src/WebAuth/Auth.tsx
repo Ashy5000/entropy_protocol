@@ -241,6 +241,7 @@ import { CHAIN_NAMESPACES, IProvider, WEB3AUTH_NETWORK } from "@web3auth/base";
 import { EthereumPrivateKeyProvider } from "@web3auth/ethereum-provider";
 import { Web3Auth } from "@web3auth/modal";
 import { MetamaskAdapter } from "@web3auth/metamask-adapter";
+
 import { useEffect, useState } from "react";
 import {Button} from "@nextui-org/react";
 import styles from './auth.module.css'
@@ -301,7 +302,7 @@ metamaskAdapter.setAdapterSettings({
 });
 
 
-function Auth() {
+function Auth({visible,setVisible}) {
     const [provider, setProvider] = useState<IProvider | null>(null);
     const [loggedIn, setLoggedIn] = useState(false);
 
@@ -324,6 +325,7 @@ function Auth() {
 
     const login = async () => {
         const web3authProvider = await web3auth.connect();
+        setVisible(false)
         setProvider(web3authProvider);
         if (web3auth.connected) {
             setLoggedIn(true);
@@ -338,6 +340,7 @@ function Auth() {
 
     const logout = async () => {
         await web3auth.logout();
+        setVisible(true)
         setProvider(null);
         setLoggedIn(false);
         uiConsole("logged out");
@@ -429,8 +432,8 @@ function Auth() {
     );
 
     const unloggedInView = (
-        <Button onClick={login} variant= "solid" style={{backgroundColor:'#45D483', fontWeight:600, width:'40px'}}>
-            Login
+        <Button onClick={login} variant= "solid" style={{backgroundColor:'#45D483', fontWeight:600, }}>
+            Connect Wallet
         </Button>
     );
 

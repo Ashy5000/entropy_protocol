@@ -6,7 +6,6 @@ import Nav from "./Nav/Nav.tsx";
 import Hero from "./Hero/Hero.tsx";
 import Auth from './WebAuth/Auth.tsx'
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>

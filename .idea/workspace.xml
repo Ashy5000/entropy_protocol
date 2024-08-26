@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c4f59ef-0da7-4908-855d-51b85a98c213" name="Changes" comment="" />
+    <list default="true" id="6c4f59ef-0da7-4908-855d-51b85a98c213" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/vite-project/src/Wallet/Wallet.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite-project/src/Wallet/wallet.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/vite-project/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/src/Nav/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/vite-project/src/Nav/Nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/src/WebAuth/Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/vite-project/src/WebAuth/Auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/src/WebAuth/auth.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/vite-project/src/WebAuth/auth.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/vite-project/src/main.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +31,9 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2l6EALe4QaQiPCeB5Od1eaRFmB6" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -57,7 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1724491980450</updated>
       <workItem from="1724491981475" duration="376000" />
-      <workItem from="1724492380641" duration="24609000" />
+      <workItem from="1724492380641" duration="29737000" />
     </task>
     <servers />
   </component>
