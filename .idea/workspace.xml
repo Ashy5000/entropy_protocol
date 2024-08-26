@@ -5,47 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c4f59ef-0da7-4908-855d-51b85a98c213" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/contracts/EntropyConsumer.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/EntropyConsumer.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/EntropyProtocol.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/EntropyProtocol.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/EntropyProvider.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/EntropyProvider.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/EntropyToken.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/EntropyToken.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/WebAuth/Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/WebAuth/Auth.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/EntropyProtocol.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/EntropyProtocol.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/eslint.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/postcss.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/public/vite.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/vite.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/Hero/Hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Hero/Hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/Hero/hero.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Hero/hero.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/Nav/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Nav/Nav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/Nav/nav.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Nav/nav.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/WebAuth/Auth.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/WebAuth/auth.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/WebAuth/auth.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/WebAuth/ethersRPC.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/WebAuth/ethersRPC.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/WebAuth/viemRPC.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/WebAuth/viemRPC.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/assets/5096160.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/5096160.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/assets/WalletConnect.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/WalletConnect.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/assets/metamask.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/metamask.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/assets/react.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/react.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/assets/sohne.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/sohne.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/assets/web3auth.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/web3auth.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/src/vite-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/vite-env.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/tsconfig.node.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.node.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/src/Wallet/Wallet.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite-project/src/Wallet/wallet.module.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,21 +35,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging main",
-    "last_opened_file_path": "C:/Users/Karan Kuthe/Desktop/New folder (2)/vite-project/src/assets",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\Karan Kuthe\\Desktop\\New folder (2)\\vite-project\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Karan Kuthe/Desktop/New folder (2)/vite-project/src/assets&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Karan Kuthe\\Desktop\\New folder (2)\\frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Karan Kuthe\Desktop\New folder (2)\vite-project\src\assets" />
@@ -94,6 +61,9 @@
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Karan Kuthe\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6c4f59ef-0da7-4908-855d-51b85a98c213" name="Changes" comment="" />
@@ -102,7 +72,9 @@
       <option name="presentableId" value="Default" />
       <updated>1724491980450</updated>
       <workItem from="1724491981475" duration="376000" />
-      <workItem from="1724492380641" duration="30051000" />
+      <workItem from="1724492380641" duration="31083000" />
+      <workItem from="1724663146100" duration="245000" />
+      <workItem from="1724663862947" duration="325000" />
     </task>
     <servers />
   </component>

@@ -3,10 +3,7 @@
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@openzeppelin/contracts": "^5.0.2",
     "hardhat": "^2.22.9",
-<<<<<<< HEAD
-    "react-router-dom": "^6.26.1"
-=======
+    "react-router-dom": "^6.26.1",
     "web3": "^4.12.1"
->>>>>>> 21e3d31cd2ab3c98ec5e60f1476b59305be8c237
   }
 }
