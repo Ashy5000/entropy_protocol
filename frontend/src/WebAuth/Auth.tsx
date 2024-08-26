@@ -38,7 +38,7 @@ const metamaskAdapter = new MetamaskAdapter({
     chainConfig: {
         chainNamespace: CHAIN_NAMESPACES.EIP155,
         chainId: "0x1",
-        rpcTarget: "https://rpc.ankr.com/eth", // This is the public RPC we have added, please pass on your own endpoint while creating an app
+        rpcTarget: "https://sepolia.infura.io/v3/", // This is the public RPC we have added, please pass on your own endpoint while creating an app
     },
 });
 
