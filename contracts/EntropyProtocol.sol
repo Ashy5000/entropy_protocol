@@ -3,13 +3,14 @@
 pragma solidity >=0.8.20 <0.9.0;
 
 import {ISP} from "@ethsign/sign-protocol-evm/src/interfaces/ISP.sol";
+import {ISPHook} from "@ethsign/sign-protocol-evm/src/interfaces/ISPHook.sol";
 import {Attestation} from "@ethsign/sign-protocol-evm/src/models/Attestation.sol";
 import {DataLocation} from "@ethsign/sign-protocol-evm/src/models/DataLocation.sol";
 import "./EntropyConsumer.sol";
 import "./EntropyProvider.sol";
 import "./EntropyToken.sol";
 
-contract EntropyProtocol {
+contract EntropyProtocol is ISPHook {
     struct QueueElement {
         // EntropyProvider provider;
         // bool depleted;
@@ -24,10 +25,6 @@ contract EntropyProtocol {
     // Ethereum Mainnet: 0x4e4af2a21ebf62850fD99Eb6253E1eFBb56098cD
     ISP public spInstance;
     bool instanceLocked = false;
-    // Schema ID
-    // Ethereum Sepolia: 0x6b
-    uint64 public schemaId;
-    bool schemaIdLocked = false;
 
     QueueElement[] queue;
     PoolConsumer router;
@@ -40,7 +37,6 @@ contract EntropyProtocol {
         router = new PoolConsumer();
         token = new EntropyToken(1_000_000_00000000000000000, owner); // 1 million tokens with 18-decimal subdivision
         minimumStake = 1_00000000000000000; // 1 token with 18-decimal subdivision
-        spInstance = ISP(0x4e4af2a21ebf62850fD99Eb6253E1eFBb56098cD);
     }
 
     function setAndLockSpInstance(address spInstanceAddress) public {
@@ -48,13 +44,6 @@ contract EntropyProtocol {
         assert(!instanceLocked);
         spInstance = ISP(spInstanceAddress);
         instanceLocked = true;
-    }
-
-    function setAndLockSchemaId(uint64 id) public {
-        assert(msg.sender == owner);
-        assert(!schemaIdLocked);
-        schemaId = id;
-        schemaIdLocked = true;
     }
 
     function getToken() public view returns (EntropyToken) {
@@ -76,10 +65,7 @@ contract EntropyProtocol {
             Attestation memory commit = spInstance.getAttestation(
                 queue[i].attestationId
             );
-            address activeProvider = abi.decode(
-                commit.recipients[0],
-                (address)
-            );
+            address activeProvider = commit.attester;
             if (!queue[i].depleted) {
                 if (activeProvider == address(provider)) {
                     return false;
@@ -89,25 +75,54 @@ contract EntropyProtocol {
         return true;
     }
 
-    function pushCommit(uint256 hash) public {
+    function pushCommit(uint64 attestationId) internal {
         QueueElement memory elem;
-        assert(token.stakedBalanceOf(msg.sender) >= minimumStake);
-        bytes[] memory recipients = new bytes[](1);
-        recipients[0] = abi.encode(msg.sender);
-        Attestation memory commit = Attestation({
-            schemaId: schemaId,
-            linkedAttestationId: 0,
-            attestTimestamp: 0,
-            revokeTimestamp: 0,
-            attester: address(this),
-            validUntil: 0,
-            dataLocation: DataLocation.ONCHAIN,
-            revoked: false,
-            recipients: recipients,
-            data: abi.encode(hash)
-        });
-        elem.attestationId = spInstance.attest(commit, "", "", "");
+        elem.attestationId = attestationId;
         queue.push(elem);
+    }
+
+    function didReceiveAttestation(
+        address attester,
+        uint64, // schemaId
+        uint64 attestationId,
+        bytes calldata // extraData
+    ) external payable {
+        assert(token.stakedBalanceOf(attester) > minimumStake);
+        pushCommit(attestationId);
+    }
+
+    function didReceiveAttestation(
+        address attester,
+        uint64, // schemaId
+        uint64 attestationId,
+        IERC20, // resolverFeeERC20Token
+        uint256, // resolverFeeERC20Amount
+        bytes calldata // extraData
+    ) external {
+        assert(token.stakedBalanceOf(attester) > minimumStake);
+        pushCommit(attestationId);
+    }
+
+    function didReceiveRevocation(
+        address, // attester
+        uint64, // schemaId
+        uint64, // attestationId
+        bytes calldata // extraData
+    ) external payable {
+        // Revocations are not allowed in the schema, so
+        // this function doesn't need to be implemented.
+    }
+
+    function didReceiveRevocation(
+        address, // attester
+        uint64, // schemaId
+        uint64, // attestationId
+        IERC20, // resolverFeeERC20Token
+        uint256, // resolverFeeERC20Amount
+        bytes calldata // extraData
+    ) external view {
+        // Revocations are not allowed in the schema, so
+        // this function doesn't need to be implemented.
     }
 
     function pullEntropy(uint256 poolSize, EntropyConsumer consumer) public {
@@ -118,7 +133,7 @@ contract EntropyProtocol {
             Attestation memory commit = spInstance.getAttestation(
                 queue[i].attestationId
             );
-            address provider = abi.decode(commit.recipients[0], (address));
+            address provider = commit.attester;
             uint256 hash = abi.decode(commit.data, (uint256));
             if (!queue[i].depleted) {
                 bool slash = router.prepare(provider, address(consumer), hash);

@@ -10,10 +10,8 @@ module.exports = {
       url: `https://sepolia.infura.io/v3/${INFURA_API_KEY}`,
       accounts: [SEPOLIA_PRIVATE_KEY],
     },
-  },
-  localhost: {
-    forking: {
-      url: "https://rpc.sepolia.org",
+    localhost: {
+      accounts: [SEPOLIA_PRIVATE_KEY],
     },
   },
 };
