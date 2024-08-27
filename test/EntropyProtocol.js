@@ -32,6 +32,10 @@ describe("Protocol", function () {
     });
     it("adds an entropy block to the queue when pushCommit() is called", async function () {
       const { protocol } = await loadFixture(deployProtocolFixture);
+      protocol.setAndLockSpInstance(
+        "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
+      );
+      protocol.setAndLockSchemaId(0x6b);
       const { provider } = await loadFixture(deployProviderFixture);
       const abiString = fs.readFileSync("test/erc20abi.json");
       const abi = JSON.parse(abiString);
@@ -49,6 +53,10 @@ describe("Protocol", function () {
   describe("Pulling", function () {
     it("removes commits from the queue when entropy is pulled", async function () {
       const { protocol } = await loadFixture(deployProtocolFixture);
+      protocol.setAndLockSpInstance(
+        "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
+      );
+      protocol.setAndLockSchemaId(0x6b);
       const { consumer } = await loadFixture(deployConsumerFixture);
       const { provider } = await loadFixture(deployProviderFixture);
       const abiString = fs.readFileSync("test/erc20abi.json");
@@ -67,6 +75,10 @@ describe("Protocol", function () {
     });
     it("gets the correct data when pulling entropy", async function () {
       const { protocol } = await loadFixture(deployProtocolFixture);
+      protocol.setAndLockSpInstance(
+        "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
+      );
+      protocol.setAndLockSchemaId(0x6b);
       const { consumer } = await loadFixture(deployConsumerFixture);
       const { provider } = await loadFixture(deployProviderFixture);
       const abiString = fs.readFileSync("test/erc20abi.json");
@@ -86,6 +98,10 @@ describe("Protocol", function () {
     });
     it("charges the consumer the correct fee", async function () {
       const { protocol } = await loadFixture(deployProtocolFixture);
+      protocol.setAndLockSpInstance(
+        "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
+      );
+      protocol.setAndLockSchemaId(0x6b);
       const { consumer } = await loadFixture(deployConsumerFixture);
       const { provider } = await loadFixture(deployProviderFixture);
       const abiString = fs.readFileSync("test/erc20abi.json");
@@ -107,6 +123,10 @@ describe("Protocol", function () {
   describe("Staking", function () {
     it("Rewards providers correctly", async function () {
       const { protocol } = await loadFixture(deployProtocolFixture);
+      protocol.setAndLockSpInstance(
+        "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
+      );
+      protocol.setAndLockSchemaId(0x6b);
       const { consumer } = await loadFixture(deployConsumerFixture);
       const { provider } = await loadFixture(deployProviderFixture);
       const abiString = fs.readFileSync("test/erc20abi.json");
