@@ -17,7 +17,7 @@ const Nav = () => {
         <>
             <Navbar position="static" style={{backgroundColor:'#09111D'}} className={styles.borderBottom} maxWidth={"full"}>
                 <NavbarBrand>
-                    <p className="text-white    ">Randomizer</p>
+                    <p className="text-white">Entropy Protocol</p>
                 </NavbarBrand>
                 <NavbarContent className=" sm:flex gap-4">
                     <NavbarItem>

@@ -1,6 +1,7 @@
 import styles from './wallet.module.css'
 import {useState} from "react";
 import Auth from '../WebAuth/Auth.tsx'
+import {Stake} from "../Supply/Stake.tsx";
 const Wallet = () =>{
 const [visible , setVisible] = useState(true)
     return(
@@ -13,6 +14,14 @@ const [visible , setVisible] = useState(true)
                      <div className={styles.authContainer}>
                          <Auth visible={visible} setVisible = {setVisible}/>
                      </div>
+                 </div>
+                 <div className={styles.supplyDiv}>
+                        <div className={styles.headingStyle}>
+                            <h1>Supply Randomness</h1>
+                        </div>
+                       <div>
+                           <Stake />
+                       </div>
                  </div>
             </div>
         </>
