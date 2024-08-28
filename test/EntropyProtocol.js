@@ -47,7 +47,10 @@ describe("Protocol", function () {
       const tokenAddress = await protocol.getToken();
       const token = new ethers.Contract(tokenAddress, abi, owner);
       await token.transfer(provider, BigInt(2_000000000000000) * BigInt(1000));
-      await provider.stake(token, BigInt(2_000000000000000) * BigInt(1000));
+      await provider.stake(
+        tokenAddress,
+        BigInt(2_000000000000000) * BigInt(1000),
+      );
       const initialSize = await protocol.activeQueueSize();
       await provider.commit(
         "0x4a7f8abdae59f7aaf4b6d8629314b32e968b4c0d",
@@ -59,24 +62,26 @@ describe("Protocol", function () {
   });
   describe("Pulling", function () {
     it("removes commits from the queue when entropy is pulled", async function () {
-      const { protocol } = await loadFixture(deployProtocolFixture);
-      protocol.setAndLockSpInstance(
+      const { protocol, owner } = await loadFixture(deployProtocolFixture);
+      await protocol.setAndLockSpInstance(
         "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
       );
       const { consumer } = await loadFixture(deployConsumerFixture);
       const { provider } = await loadFixture(deployProviderFixture);
-      provider.setAndLockSpInstance(
+      await provider.setAndLockSpInstance(
         "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
       );
-      provider.setAndLockSchemaId(0x6b);
+      await provider.setAndLockSchemaId(0x79);
       const abiString = fs.readFileSync("test/erc20abi.json");
       const abi = JSON.parse(abiString);
-      const { owner } = await loadFixture(getOwnerFixture);
       const tokenAddress = await protocol.getToken();
       const token = new ethers.Contract(tokenAddress, abi, owner);
-      await token.transfer(provider, BigInt(1_000000000000000) * BigInt(100));
-      await token.transfer(consumer, BigInt(1_000000000000000));
-      await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
+      await token.transfer(provider, BigInt(2_000000000000000) * BigInt(1000));
+      await provider.stake(
+        tokenAddress,
+        BigInt(2_000000000000000) * BigInt(1000),
+      );
+      await token.transfer(consumer, BigInt(1_000000000000000) * BigInt(1000));
       await provider.commit(protocol, BigInt(0));
       const initialSize = await protocol.activeQueueSize();
       await protocol.pullEntropy(1, consumer);
@@ -84,24 +89,23 @@ describe("Protocol", function () {
       expect(finalSize).to.equal(initialSize - BigInt(1));
     });
     it("gets the correct data when pulling entropy", async function () {
-      const { protocol } = await loadFixture(deployProtocolFixture);
-      protocol.setAndLockSpInstance(
+      const { protocol, owner } = await loadFixture(deployProtocolFixture);
+      await protocol.setAndLockSpInstance(
         "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
       );
       const { consumer } = await loadFixture(deployConsumerFixture);
       const { provider } = await loadFixture(deployProviderFixture);
-      provider.setAndLockSpInstance(
+      await provider.setAndLockSpInstance(
         "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
       );
-      provider.setAndLockSchemaId(0x6b);
+      await provider.setAndLockSchemaId(0x79);
       const abiString = fs.readFileSync("test/erc20abi.json");
       const abi = JSON.parse(abiString);
-      const { owner } = await loadFixture(getOwnerFixture);
       const tokenAddress = await protocol.getToken();
       const token = new ethers.Contract(tokenAddress, abi, owner);
-      await token.transfer(provider, BigInt(1_000000000000000) * BigInt(100));
+      await token.transfer(provider, BigInt(2_000000000000000) * BigInt(100));
       await token.transfer(consumer, BigInt(1_000000000000000));
-      await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
+      await provider.stake(token, BigInt(2_000000000000000) * BigInt(100));
       const hash = Web3.utils.soliditySha3(1234);
       await provider.commit(protocol, hash); // Commit
       await protocol.pullEntropy(1, consumer); // Request entropy
@@ -110,24 +114,23 @@ describe("Protocol", function () {
       expect(result).to.equal(1234);
     });
     it("charges the consumer the correct fee", async function () {
-      const { protocol } = await loadFixture(deployProtocolFixture);
-      protocol.setAndLockSpInstance(
+      const { protocol, owner } = await loadFixture(deployProtocolFixture);
+      await protocol.setAndLockSpInstance(
         "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
       );
       const { consumer } = await loadFixture(deployConsumerFixture);
       const { provider } = await loadFixture(deployProviderFixture);
-      provider.setAndLockSpInstance(
+      await provider.setAndLockSpInstance(
         "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
       );
-      provider.setAndLockSchemaId(0x6b);
+      await provider.setAndLockSchemaId(0x79);
       const abiString = fs.readFileSync("test/erc20abi.json");
       const abi = JSON.parse(abiString);
-      const { owner } = await loadFixture(getOwnerFixture);
       const tokenAddress = await protocol.getToken();
       const token = new ethers.Contract(tokenAddress, abi, owner);
-      await token.transfer(provider, BigInt(1_000000000000000) * BigInt(100));
+      await token.transfer(provider, BigInt(2_000000000000000) * BigInt(100));
       await token.transfer(consumer, BigInt(1_000000000000000));
-      await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
+      await provider.stake(token, BigInt(2_000000000000000) * BigInt(100));
       const hash = Web3.utils.soliditySha3(1234);
       await provider.commit(protocol, hash); // Commit
       await protocol.pullEntropy(1, consumer); // Request entropy
@@ -138,24 +141,23 @@ describe("Protocol", function () {
   });
   describe("Staking", function () {
     it("Rewards providers correctly", async function () {
-      const { protocol } = await loadFixture(deployProtocolFixture);
-      protocol.setAndLockSpInstance(
+      const { protocol, owner } = await loadFixture(deployProtocolFixture);
+      await protocol.setAndLockSpInstance(
         "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
       );
       const { consumer } = await loadFixture(deployConsumerFixture);
       const { provider } = await loadFixture(deployProviderFixture);
-      provider.setAndLockSpInstance(
+      await provider.setAndLockSpInstance(
         "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
       );
-      provider.setAndLockSchemaId(0x6b);
+      await provider.setAndLockSchemaId(0x79);
       const abiString = fs.readFileSync("test/erc20abi.json");
       const abi = JSON.parse(abiString);
-      const { owner } = await loadFixture(getOwnerFixture);
       const tokenAddress = await protocol.getToken();
       const token = new ethers.Contract(tokenAddress, abi, owner);
-      await token.transfer(provider, BigInt(1_000000000000000) * BigInt(100));
+      await token.transfer(provider, BigInt(2_000000000000000) * BigInt(100));
       await token.transfer(consumer, BigInt(1_000000000000000));
-      await provider.stake(token, BigInt(1_000000000000000) * BigInt(100));
+      await provider.stake(token, BigInt(2_000000000000000) * BigInt(100));
       const initialBalance = await token.stakedBalanceOf(provider);
       const hash = Web3.utils.soliditySha3(1234);
       await provider.commit(protocol, hash); // Commit
