@@ -14,7 +14,7 @@ contract EntropyToken is ERC20 {
     constructor(
         uint256 totalSupply,
         address allocationAddress
-    ) public ERC20("Entropy Protocol", "ENTP") {
+    ) ERC20("Entropy Protocol", "ENTP") {
         owner = msg.sender;
         stakingFraction = 10000; // 0.01% return per block of entropy
         slashingFraction = 10; // 10% slashing per failure to resolve commit
