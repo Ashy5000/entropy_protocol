@@ -160,6 +160,10 @@ contract SingleContribProvider is EntropyProvider {
         waitingConsumers.push(consumer);
     }
 
+    function getWaitingConsumerCount() public view returns (uint256) {
+        return waitingConsumers.length;
+    }
+
     function supply(uint256 data) public {
         assert(msg.sender == owner);
         waitingConsumers[0].pushTo(data);
