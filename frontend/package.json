@@ -29,7 +29,8 @@
     "use-scramble": "^2.2.15",
     "viem": "^2.20.0",
     "wagmi": "^2.12.7",
-    "web3": "^4.12.1"
+    "web3": "^4.12.1",
+    "solc": "0.8.20-fixed"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
