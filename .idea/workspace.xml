@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c4f59ef-0da7-4908-855d-51b85a98c213" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/test/GetTokenAddress.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/protocolabi.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/singlecontribproviderabi.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/EntropyProvider.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/EntropyProvider.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/WebAuth/Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/WebAuth/Auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hardhat.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/hardhat.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/deploy.js" beforeDir="false" afterPath="$PROJECT_DIR$/ignition/modules/deploy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/EntropyProtocol.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/EntropyProtocol.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +43,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Merging main",
     "last_opened_file_path": "C:/Users/Karan Kuthe/Desktop/New folder (2)/frontend/src/assets",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -78,7 +88,7 @@
       <workItem from="1724773086363" duration="2112000" />
       <workItem from="1724783329725" duration="1145000" />
       <workItem from="1724822979754" duration="715000" />
-      <workItem from="1724834443108" duration="64052000" />
+      <workItem from="1724834443108" duration="65296000" />
     </task>
     <servers />
   </component>
