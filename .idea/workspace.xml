@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c4f59ef-0da7-4908-855d-51b85a98c213" name="Changes" comment="" />
+    <list default="true" id="6c4f59ef-0da7-4908-855d-51b85a98c213" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +24,7 @@
 }</component>
   <component name="ProjectId" id="2l6EALe4QaQiPCeB5Od1eaRFmB6" />
   <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -32,19 +35,21 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Karan Kuthe/Desktop/New folder (2)/vite-project/src/assets&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Karan Kuthe/Desktop/New folder (2)/frontend/src/assets&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Confirmation&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Karan Kuthe\\Desktop\\New folder (2)\\frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Karan Kuthe\Desktop\New folder (2)\frontend\src\assets" />
+      <recent name="C:\Users\Karan Kuthe\Desktop\New folder (2)\frontend\src\Supply" />
       <recent name="C:\Users\Karan Kuthe\Desktop\New folder (2)\vite-project\src\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -66,7 +71,15 @@
       <workItem from="1724491981475" duration="376000" />
       <workItem from="1724492380641" duration="31083000" />
       <workItem from="1724663146100" duration="245000" />
-      <workItem from="1724663862947" duration="638000" />
+      <workItem from="1724663862947" duration="947000" />
+      <workItem from="1724664837041" duration="626000" />
+      <workItem from="1724683813679" duration="144000" />
+      <workItem from="1724683975661" duration="2887000" />
+      <workItem from="1724768352608" duration="12000" />
+      <workItem from="1724773086363" duration="2112000" />
+      <workItem from="1724783329725" duration="1145000" />
+      <workItem from="1724822979754" duration="715000" />
+      <workItem from="1724834443108" duration="60751000" />
     </task>
     <servers />
   </component>
