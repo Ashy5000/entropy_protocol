@@ -1,5 +1,5 @@
 import {Button, divider, Input, Progress} from "@nextui-org/react";
-import styles from './stake.module.css'
+import styles from './commit.module.css'
 import {useState} from "react";
 
 type AddressData = {
@@ -24,7 +24,7 @@ const [progress , setProgress] = useState(false)
 
     return (
         <>
-            {!progress ?  <form className={styles.formContainer}>
+            {!progress ?  <form className={styles.commitContainer}>
         <p style={{color:'#dc2626', fontSize:'18px'}}>After this step there is no going back, Do not close your browser until all commitments have been fulfilled.</p>
         <Input
             required

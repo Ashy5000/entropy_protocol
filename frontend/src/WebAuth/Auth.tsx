@@ -8,6 +8,7 @@ import { Button } from "@nextui-org/react";
 import styles from "./auth.module.css";
 import RPC from "./ethersRPC";
 import {Deploy} from "../DeployProvider/DeployProvider.tsx";
+import {Stake} from "../Supply/Stake.tsx";
 import {ethers} from "ethers";
 
 const clientId =
@@ -52,11 +53,11 @@ adapters.forEach((adapter) => {
     web3auth.configureAdapter(adapter);
 });
 
-
+const entropyTokenAddress = "0x877534C6A7bA840c7346b39E6B24b6ac91c5D1a5"
+const entropyProviderAddress = "0x4a7f8abdae59f7aaf4b6d8629314b32e968b4c0d"
 function Auth({ setVisible }) {
     const [provider, setProvider] = useState<IProvider | null>(null);
     const [loggedIn, setLoggedIn] = useState(false);
-
 
     useEffect(() => {
         const init = async () => {
@@ -66,6 +67,7 @@ function Auth({ setVisible }) {
 
                 if (web3auth.connected) {
                     setLoggedIn(true);
+
                 }
             } catch (error) {
                 console.error(error);
@@ -91,20 +93,8 @@ function Auth({ setVisible }) {
             console.error("Web3Auth provider is null");
         }
     };
-    // const login = async () => {
-    //     const web3authProvider = await web3auth.connect();
-    //     setVisible(false);
-    //     setProvider(web3authProvider);
-    //     console.log(web3authProvider)
-    //     if (web3auth.connected) {
-    //         setLoggedIn(true);
-    //     }
-    // };
 
-    const getUserInfo = async () => {
-        const user = await web3auth.getUserInfo();
-        uiConsole(user);
-    };
+
 
     const logout = async () => {
         await web3auth.logout();
@@ -114,43 +104,7 @@ function Auth({ setVisible }) {
         uiConsole("logged out");
     };
 
-    // Check the RPC file for the implementation
-    const getAccounts = async () => {
-        if (!provider) {
-            uiConsole("provider not initialized yet");
-            return;
-        }
-        const address = await RPC.getAccounts(provider);
-        uiConsole(address);
-    };
 
-    const getBalance = async () => {
-        if (!provider) {
-            uiConsole("provider not initialized yet");
-            return;
-        }
-        const balance = await RPC.getBalance(provider);
-        uiConsole(balance);
-    };
-
-    const signMessage = async () => {
-        if (!provider) {
-            uiConsole("provider not initialized yet");
-            return;
-        }
-        const signedMessage = await RPC.signMessage(provider);
-        uiConsole(signedMessage);
-    };
-
-    const sendTransaction = async () => {
-        if (!provider) {
-            uiConsole("provider not initialized yet");
-            return;
-        }
-        uiConsole("Sending Transaction...");
-        const transactionReceipt = await RPC.sendTransaction(provider);
-        uiConsole(transactionReceipt);
-    };
 
     function uiConsole(...args: any[]): void {
         const el = document.querySelector("#console>p");
@@ -163,49 +117,19 @@ function Auth({ setVisible }) {
     const loggedInView = (
 
         <div className={styles.getInfo}>
-            <Button
-                onClick={getUserInfo}
-                size="sm"
-                style={{ backgroundColor: "#45D483", fontWeight: 600 }}
-            >
-                Get User Info
-            </Button>
-            <Button
-                onClick={getAccounts}
-                size="sm"
-                style={{ backgroundColor: "#45D483", fontWeight: 600 }}
-            >
-                Get Accounts
-            </Button>
-            <Button
-                onClick={getBalance}
-                size="sm"
-                style={{ backgroundColor: "#45D483", fontWeight: 600 }}
-            >
-                Get Balance
-            </Button>
-            <Button
-                onClick={signMessage}
-                size="sm"
-                style={{ backgroundColor: "#45D483", fontWeight: 600 }}
-            >
-                Sign Message
-            </Button>
-            <Button
-                onClick={sendTransaction}
-                size="sm"
-                style={{ backgroundColor: "#45D483", fontWeight: 600 }}
-            >
-                Send Transaction
-            </Button>
-            <Button
-                onClick={logout}
-                size="sm"
-                style={{ backgroundColor: "#45D483", fontWeight: 600 }}
-            >
-                Log Out
-            </Button>
-             <Deploy provider={provider}/>
+            <div className={styles.deployContainer}>
+                <Button
+                    onClick={logout}
+                    size="sm"
+                    style={{ backgroundColor: "#45D483", fontWeight: 600 }}
+                >
+                    Log Out
+                </Button>
+                <Deploy provider={provider}/>
+            </div>
+            <div style={{marginTop:'4rem'}}>
+                <Stake entropyTokenAddress = {entropyTokenAddress} entropyProviderAddress={entropyProviderAddress} provider={provider} />
+            </div>
         </div>
     );
 

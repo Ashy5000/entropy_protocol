@@ -240,6 +240,8 @@ export const Deploy = ({provider}) => {
     return(
         <>
             <form className={styles.formContainer} onSubmit={e => e.preventDefault()}>
+                <h1 style={{color: 'white', fontSize: '24px'}}>Deploy Contract</h1>
+
                 <Input
                     required
                     label='Address'
@@ -259,7 +261,7 @@ export const Deploy = ({provider}) => {
                     <Button style={{
                         backgroundColor: '#45D483',
                         fontWeight: 600,
-                        width:'45%',
+                        width: '45%',
                     }}
                             onClick={getExistingContract}
 
@@ -267,7 +269,7 @@ export const Deploy = ({provider}) => {
                     <Button style={{
                         backgroundColor: '#45D483',
                         fontWeight: 600,
-                        width:'45%',
+                        width: '45%',
                         marginBottom: '2rem'
                     }}
                             onClick={deployContract}

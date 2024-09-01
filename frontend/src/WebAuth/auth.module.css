@@ -1,8 +1,12 @@
 .getInfo{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap:16px;
+}
 
-
-
+.deployContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

@@ -15,20 +15,12 @@ const [visible , setVisible] = useState(true)
                             {visible ? <h1>Connect Your Wallet to Get Started</h1> : null}
                         </div>
                         <div className={styles.authContainer}>
-                            <Auth visible={visible} setVisible={setVisible} />
+                            <Auth visible={visible} setVisible={setVisible}  />
                         </div>
                     </div>
-                    <div className={styles.supplyDiv}>
-                        <div className={styles.headingStyle}>
-                            <h1>Supply Randomness</h1>
-                        </div>
-                        <div>
-                            <Stake/>
-                        </div>
-                    </div>
+
                 </div>
-                <div>
-                </div>
+
             </div>
 
         </>
