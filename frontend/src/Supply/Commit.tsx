@@ -1,7 +1,9 @@
 import { Button, Input, Progress } from "@nextui-org/react";
 import styles from "./commit.module.css";
 import { useState } from "react";
-import { sha256, toUtf8Bytes, Contract } from "ethers";
+import { sha256, toUtf8Bytes, Contract, keccak256 } from "ethers";
+import { ethers } from "ethers";
+import { Web3 } from "web3";
 
 type randomData = {
   block: number;
@@ -13,7 +15,6 @@ type randomDataProps = randomData & {
 
 export function Commit({ provider, entropyProviderAddress }) {
   const [progress, setProgress] = useState(false);
-  const [randomData, setRandomData] = useState(0);
 
   const providerABI = [
     {
@@ -178,18 +179,12 @@ export function Commit({ provider, entropyProviderAddress }) {
     },
   ];
 
-  function handleInputChange(e) {
-    const value = Number(e.target.value);
-    setRandomData(value);
-  }
-
   async function randomCommit() {
     setProgress(true);
 
-    const dataToHash = toUtf8Bytes(randomData.toString());
+    let randomData = Math.floor(Math.random() * 9007199254740991);
 
-    const hashHex = sha256(dataToHash);
-    const randomDataHash = BigInt(hashHex);
+    const randomDataHash = Web3.utils.soliditySha3(randomData);
 
     const signer = await provider.getSigner();
 
@@ -207,20 +202,18 @@ export function Commit({ provider, entropyProviderAddress }) {
       );
       await commitTx.wait();
 
-      // let waitingCount = 0;
-      // while (waitingCount === 0) {
-      //   waitingCount = await commitContract.getWaitingConsumerCount();
-      //   if (waitingCount > 0) {
-      //     break;
-      //   }
-      // }
+      function sleep(seconds) {
+        return new Promise((resolve) => {
+          setTimeout(resolve, seconds * 1000);
+        });
+      }
 
-      // const supplyTx = await commitContract.supply(randomDataHash);
-      // await supplyTx.wait();
+      await sleep(60);
+      await commitContract.supply(randomData);
 
-      // console.log("Data submitted successfully!");
-      // setProgress(false);
-      // alert("Commitment Successful");
+      console.log("Data submitted successfully!");
+      setProgress(false);
+      alert("Commitment Successful");
     } catch (error) {
       console.error("Error committing data:", error);
     }
@@ -235,20 +228,6 @@ export function Commit({ provider, entropyProviderAddress }) {
             After this step there is no going back, Do not close your browser
             until all commitments have been fulfilled.
           </p>
-          <Input
-            required
-            label="Blocks to Supply"
-            type="number"
-            variant="bordered"
-            color="success"
-            placeholder="Min 1.00"
-            size="sm"
-            onChange={handleInputChange}
-            classNames={{
-              label: "text-white",
-              input: "text-white flex ml-[2rem]",
-            }}
-          />
           <Button
             style={{
               backgroundColor: "#45D483",

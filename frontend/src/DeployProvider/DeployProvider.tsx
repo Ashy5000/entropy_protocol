@@ -191,10 +191,10 @@ export const Deploy = ({ provider, setProvider }) => {
       await contract.waitForDeployment();
 
       try {
-        contract.setAndLockSpInstance(
+        await contract.setAndLockSpInstance(
           "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
         );
-        contract.setAndLockSchemaId(0x79);
+        await contract.setAndLockSchemaId(0x79);
       } catch (error) {
         console.log("spInstance and schemaId already set.");
       }
@@ -236,10 +236,10 @@ export const Deploy = ({ provider, setProvider }) => {
       );
 
       try {
-        contract.setAndLockSpInstance(
+        await contract.setAndLockSpInstance(
           "0x878c92fd89d8e0b93dc0a3c907a2adc7577e39c5",
         );
-        contract.setAndLockSchemaId(0x79);
+        await contract.setAndLockSchemaId(0x79);
       } catch (error) {
         console.log("spInstance and schemaId already set.");
       }
