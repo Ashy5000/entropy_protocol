@@ -6,6 +6,8 @@ type AccountData = {
   unstake:number
 }
 const entropyTokenAddress = "0x877534C6A7bA840c7346b39E6B24b6ac91c5D1a5";
+const entropyProtocolAddress = "0x4a7f8abdae59f7aaf4b6d8629314b32e968b4c0d";
+
 
 const providerABI = [
     {
@@ -188,12 +190,12 @@ export function Unstake({
 
             const unstakeTx = await contract.unstake(
                 entropyTokenAddress,
-                entropyProviderAddress,
+                entropyProtocolAddress,
                 parseUnits(unstakeAmount.toString())
             );
             await unstakeTx.wait();
 
-            const withdrawTx = await contract.withdraw(parseUnits(unstakeAmount.toString()));
+            const withdrawTx = await contract.withdraw(entropyTokenAddress, parseUnits(unstakeAmount.toString()));
             await withdrawTx.wait();
 
             alert('Tokens unstaked and withdrawn successfully.');
