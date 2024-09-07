@@ -4,6 +4,7 @@ import { useState } from "react";
 import { sha256, toUtf8Bytes, Contract, keccak256 } from "ethers";
 import { ethers } from "ethers";
 import { Web3 } from "web3";
+import {Unstake} from "./Unstake.tsx";
 
 type randomData = {
   block: number;
@@ -252,6 +253,7 @@ export function Commit({ provider, entropyProviderAddress }) {
           />
         </div>
       ) : null}
+      <Unstake entropyProviderAddress={entropyProviderAddress} provider={provider} />
     </>
   );
 }

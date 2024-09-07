@@ -4,11 +4,9 @@
     gap:1rem;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
     width: 20rem;
     height: 20rem;
     border:0.5px solid grey;
-    padding:2rem;
     border-radius: 8px;
-
+    padding:1rem;
 }
