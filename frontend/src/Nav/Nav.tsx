@@ -19,24 +19,7 @@ const Nav = () => {
                 <NavbarBrand>
                     <p className="text-white">Entropy Protocol</p>
                 </NavbarBrand>
-                <NavbarContent className=" sm:flex gap-4">
-                    <NavbarItem>
-                        <Link style={{color:'white'}} href="#" >
-                            Features
-                        </Link>
-                    </NavbarItem>
-                    <NavbarItem isActive>
-                        <Link href="#" aria-current="page" style={{color:'white'}} >
-                            Customers
-                        </Link>
-                    </NavbarItem>
-                    <NavbarItem>
-                        <Link color="foreground" href="#" style={{color:'white'}} >
-                            Integrations
-                        </Link>
-                    </NavbarItem>
 
-                </NavbarContent>
                 <NavbarContent justify="end">
                     <NavbarItem>
                         <Link to='/wallet'>

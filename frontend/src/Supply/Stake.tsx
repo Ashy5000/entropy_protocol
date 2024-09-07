@@ -480,39 +480,43 @@ export function Stake({
 
   return (
     <>
-      <form className={styles.formContainer}>
-        <h1 style={{ color: "white", fontSize: "24px" }}>Supply Randomness</h1>
-        {error && <p style={{ color: "#dc2626" }}>{error}</p>}
-        <Input
-          required
-          label="Stake Amount"
-          type="number"
-          variant="bordered"
-          color="success"
-          placeholder="Min 1.00"
-          size="sm"
-          onChange={handleInputChange}
-          classNames={{
-            label: "text-white",
-            input: "text-white flex ml-[2rem]",
-          }}
+      <form className={styles.supplyParent} >
+        <div className={styles.formContainer}>
+          <h1 style={{color: "white", fontSize: "24px"}}>Stake</h1>
+          {error && <p style={{color: "#dc2626"}}>{error}</p>}
+          <Input
+              required
+              label="Stake Amount"
+              type="number"
+              variant="bordered"
+              color="success"
+              placeholder="Min 1.00"
+              size="sm"
+              onChange={handleInputChange}
+              classNames={{
+                label: "text-white",
+                input: "text-white flex ml-[2rem]",
+              }}
+          />
+          <Button
+              style={{
+                backgroundColor: "#45D483",
+                fontWeight: 600,
+                width: "100%",
+                marginBottom: "2rem",
+              }}
+              onClick={handleStake}
+          >
+            Stake
+          </Button>
+        </div>
+        <Commit
+            provider={provider}
+            entropyProviderAddress={entropyProviderAddress}
         />
-        <Button
-          style={{
-            backgroundColor: "#45D483",
-            fontWeight: 600,
-            width: "100%",
-            marginBottom: "2rem",
-          }}
-          onClick={handleStake}
-        >
-          Stake
-        </Button>
       </form>
-      <Commit
-        provider={provider}
-        entropyProviderAddress={entropyProviderAddress}
-      />
+
+
     </>
   );
 }

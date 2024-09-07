@@ -6,3 +6,16 @@
 :root{
     font-family: sohne , sans-serif;
 }
+
+::-webkit-scrollbar{
+    width: 16px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: #09111D;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: white;
+    border-radius: 10px;
+}

@@ -1,13 +1,12 @@
 .backgroundContainer{
     display: flex;
     justify-content: start;
-    align-items: start;
+    align-items: center;
     flex-direction: column;
     background-color: #09111D;
-    width: 99vw;
-    height: 150vh;
-    padding-top: 4rem;
-    padding-left: 2rem;
+    width: auto;
+    height: 100vh;
+    padding:4rem 2rem 0rem 2rem;
     gap:2rem;
 
 
