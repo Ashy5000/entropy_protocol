@@ -1,12 +1,16 @@
-.commitContainer{
+.commitContainer {
     display: flex;
     flex-direction: column;
-    gap:1rem;
+    gap: 1rem;
     justify-content: center;
     align-items: center;
     width: 20rem;
     height: 20rem;
-    border:0.5px solid grey;
+    border: 0.5px solid grey;
     border-radius: 8px;
-    padding:1rem;
+    padding: 1rem;
+}
+
+.primaryButton {
+    background: -webkit-linear-gradient(#00ccff, #66ff99);
 }

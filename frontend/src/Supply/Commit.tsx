@@ -4,7 +4,7 @@ import { useState } from "react";
 import { sha256, toUtf8Bytes, Contract, keccak256 } from "ethers";
 import { ethers } from "ethers";
 import { Web3 } from "web3";
-import {Unstake} from "./Unstake.tsx";
+import { Unstake } from "./Unstake.tsx";
 
 type randomData = {
   block: number;
@@ -214,7 +214,7 @@ export function Commit({ provider, entropyProviderAddress }) {
 
       console.log("Data submitted successfully!");
       setProgress(false);
-      alert("Commitment Successful");
+      alert("Done! You may now close your browser.");
     } catch (error) {
       console.error("Error committing data:", error);
     }
@@ -226,7 +226,7 @@ export function Commit({ provider, entropyProviderAddress }) {
         <form className={styles.commitContainer}>
           <h1 style={{ color: "white", fontSize: "24px" }}>Commit</h1>
           <p style={{ color: "#dc2626", fontSize: "18px" }}>
-            After this step there is no going back, Do not close your browser
+            After this step there is no going back. Do not close your browser
             until all commitments have been fulfilled.
           </p>
           <Button
@@ -236,6 +236,7 @@ export function Commit({ provider, entropyProviderAddress }) {
               width: "100%",
               marginBottom: "2rem",
             }}
+            className={styles.primaryButton}
             onClick={randomCommit}
           >
             Commit
@@ -253,7 +254,10 @@ export function Commit({ provider, entropyProviderAddress }) {
           />
         </div>
       ) : null}
-      <Unstake entropyProviderAddress={entropyProviderAddress} provider={provider} />
+      <Unstake
+        entropyProviderAddress={entropyProviderAddress}
+        provider={provider}
+      />
     </>
   );
 }
